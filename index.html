@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP8266 Button State</title>
+    <script>
+        async function fetchState() {
+            const response = await fetch("https://raw.githubusercontent.com/<GITHUB_USERNAME>/<REPO_NAME>/main/state.json");
+            const data = await response.json();
+            document.getElementById("state").innerText = "Button State: " + data.state;
+        }
+        setInterval(fetchState, 2000); // Refresh every 2 seconds
+        fetchState();
+    </script>
+</head>
+<body>
+    <h2>ESP8266 Button State</h2>
+    <p id="state">Loading...</p>
+</body>
+</html>
