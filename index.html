@@ -4,18 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ESP8266 Button State</title>
-    <script>
-        async function fetchState() {
-            const response = await fetch("https://raw.githubusercontent.com/Kirroslink/gitbutton_test/main/state.json");
-            const data = await response.json();
-            document.getElementById("state").innerText = "Button State: " + data.state;
-        }
-        setInterval(fetchState, 2000); // Refresh every 2 seconds
-        fetchState();
-    </script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h2>ESP8266 Button State</h2>
-    <p id="state">Loading...</p>
+    <div class="container">
+        <h2>Button State: <span id="state">Loading...</span></h2>
+        <div class="led" id="led"></div>
+        <button onclick="fetchState()">Refresh State</button>
+    </div>
+
+    <script>
+        async function fetchState() {
+            let response = await fetch("https://raw.githubusercontent.com/YourGitHubUsername/esp8266-button-state/main/state.json");
+            let data = await response.json();
+            let stateElement = document.getElementById("state");
+            let ledElement = document.getElementById("led");
+
+            stateElement.textContent = data.state;
+            if (data.state === "ON") {
+                ledElement.classList.add("on");
+            } else {
+                ledElement.classList.remove("on");
+            }
+        }
+
+        fetchState();
+        setInterval(fetchState, 5000);
+    </script>
 </body>
 </html>
