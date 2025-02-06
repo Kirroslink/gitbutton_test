@@ -6,7 +6,7 @@
     <title>ESP8266 Button State</title>
     <script>
         async function fetchState() {
-            const response = await fetch("https://raw.githubusercontent.com/<GITHUB_USERNAME>/<REPO_NAME>/main/state.json");
+            const response = await fetch("https://raw.githubusercontent.com/Kirroslink/gitbutton_test/main/state.json");
             const data = await response.json();
             document.getElementById("state").innerText = "Button State: " + data.state;
         }
