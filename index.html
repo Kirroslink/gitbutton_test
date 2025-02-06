@@ -15,7 +15,7 @@
 
     <script>
         async function fetchState() {
-            let response = await fetch("https://raw.githubusercontent.com/YourGitHubUsername/esp8266-button-state/main/state.json");
+            let response = await fetch("https://raw.githubusercontent.com/Kiroslink/gitbutton_test/main/state.json");
             let data = await response.json();
             let stateElement = document.getElementById("state");
             let ledElement = document.getElementById("led");
